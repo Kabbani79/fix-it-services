@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sendos Services - Professionele Diensten</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script>
+    /* =========================================================================
+       KONFIGURACJA DANYCH STRONY / INSTELLINGEN / إعدادات الموقع
+       Zmieniaj tylko wartości wewnątrz cudzysłowów ""
+       Pas alleen de waarden tussen de aanhalingstekens "" aan
+       قم بتعديل النصوص داخل علامات الاقتباس فقط ""
+       ========================================================================= */
+    const SITE_DATA = {
+      // 1. Dane podstawowe / Basisgegevens / المعلومات الأساسية
+      companyName: "Sendos Services",
+      tagline: "Professionele diensten voor u!",
+      phoneDisplay: "+31 6 236 516 78",
+      phoneRaw: "+31623651678",        // Do dzwonienia (z kodem kraju bez spacji)
+      whatsappNumber: "31623651678",    // Bez '+' i bez spacji do WhatsApp
+      email: "info@sendosservices.nl",
+      address: "Mambostraat 108, 5802 LE Venray",
+      kvk: "96401214",
+      btw: "NL005209514B76",
+
+      // 2. Statystyki / Statistieken / الإحصائيات
+      stats: [
+        { number: "200+", label: "Tevreden klanten" },
+        { number: "35+",  label: "Diensten" },
+        { number: "300+", label: "Projects Completed" },
+        { number: "10+",  label: "Jaar ervaring" }
+      ],
+
+      // 3. Sekcja 'O nas' / Over ons / نبذة عنا
+      aboutTitle: "Wij bieden de perfecte oplossing voor uw problemen",
+      aboutText: "Bij Sendos Services staan wij klaar met een breed aanbod aan diensten, helemaal afgestemd op uw gemak. Of het nu gaat om het vervangen van een klein lampje of het aanleggen van een complete installatie, wij nemen het graag voor u uit handen. Met ruim 10 jaar ervaring kunt u rekenen op vakmanschap en betrouwbaarheid.",
+      aboutFeatures: [
+        "Kwaliteitscontrole",
+        "Oplossingsgericht maatwerk",
+        "Vakkundig team",
+        "Tevredenheidsgarantie",
+        "Transparante werkwijze",
+        "Professioneel & gekwalificeerd"
+      ],
+
+      // 4. Usługi / Diensten / الخدمات
+      services: [
+        {
+          title: "Klus Diensten",
+          desc: "Kleine en grote reparaties, montage van meubels, deuren, en allerhande klussen in en rond het huis.",
+          icon: "fa-hammer"
+        },
+        {
+          title: "Diverse Diensten",
+          desc: "Elektra, leidingwerk, installaties en maatwerkoplossingen voor particulieren en bedrijven.",
+          icon: "fa-wrench"
+        },
+        {
+          title: "Schoonmaak Diensten",
+          desc: "Professionele tuin- en terrasreiniging, opleveringsschoonmaak en periodiek onderhoud.",
+          icon: "fa-broom"
+        }
+      ],
+
+      // 5. Cennik / Prijzen / الأسعار
+      prices: [
+        { title: "Tuinschoonmaak", unit: "per 1 m²", price: "€2" },
+        { title: "Overkappingschoonmaak", unit: "Per stuk", price: "€65" },
+        { title: "Laminaat Leggen", unit: "per 1 m² (incl. plinten)", price: "€13" },
+        { title: "Tapijt & Behang", unit: "per 1 m²", price: "€9" },
+        { title: "Uurtarief Diverse Diensten", unit: "per uur (of vaste prijs bij grote klus)", price: "€50" }
+      ],
+      priceNotes: [
+        "Minimale klusprijs: €50",
+        "Toeslag service auto per offerte: €8",
+        "Reiskostenvergoeding vanaf 15 km: €0,23 per km",
+        "Alle prijzen zijn excl. BTW"
+      ],
+
+      // 6. Social Media
+      facebookUrl: "https://facebook.com",
+      instagramUrl: "https://instagram.com"
+    };
+  </script>
+
+  <style>
+    :root {
+      --primary: #0056b3;
+      --primary-dark: #003d80;
+      --accent: #ff9800;
+      --whatsapp: #25D366;
+      --text-dark: #222222;
+      --text-muted: #666666;
+      --bg-light: #f8f9fa;
+      --white: #ffffff;
+      --border: #e9ecef;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      color: var(--text-dark);
+      background-color: var(--white);
+      line-height: 1.6;
+    }
+
+    /* Top Bar */
+    .top-bar {
+      background: #111;
+      color: #ccc;
+      font-size: 13px;
+      padding: 8px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .top-bar a {
+      color: #eee;
+      text-decoration: none;
+      margin-right: 15px;
+    }
+    .top-bar a:hover { color: var(--accent); }
+
+    /* Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--white);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+      z-index: 1000;
+    }
+    .nav-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+    .logo {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 500;
+      font-size: 15px;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--primary); }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, rgba(0,86,179,0.95), rgba(0,40,90,0.9)), url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80') center/cover;
+      color: var(--white);
+      text-align: center;
+      padding: 90px 20px;
+    }
+    .hero h1 { font-size: 42px; margin-bottom: 10px; font-weight: 700; }
+    .hero p { font-size: 20px; margin-bottom: 30px; opacity: 0.9; }
+    .btn-whatsapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--whatsapp);
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 16px;
+      box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-whatsapp:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(37,211,102,0.6);
+    }
+
+    /* Stats Section */
+    .stats-container {
+      max-width: 1100px;
+      margin: -40px auto 40px;
+      background: var(--white);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      padding: 25px 15px;
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+    .stat-item h3 { font-size: 32px; color: var(--primary); font-weight: 700; }
+    .stat-item p { color: var(--text-muted); font-size: 14px; font-weight: 500; }
+
+    /* Layout Sections */
+    section { padding: 60px 20px; }
+    .container { max-width: 1200px; margin: 0 auto; }
+    .section-title {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+    .section-title h2 { font-size: 30px; color: var(--primary-dark); }
+    .section-title p { color: var(--text-muted); font-size: 16px; }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      margin-top: 25px;
+    }
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 500;
+      color: #333;
+    }
+    .feature-item i { color: #28a745; font-size: 18px; }
+
+    /* Services */
+    .services-bg { background-color: var(--bg-light); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+    }
+    .service-card {
+      background: var(--white);
+      padding: 35px 25px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: transform 0.2s;
+    }
+    .service-card:hover { transform: translateY(-5px); }
+    .service-icon {
+      width: 70px;
+      height: 70px;
+      background: rgba(0,86,179,0.1);
+      color: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin: 0 auto 20px;
+    }
+
+    /* Pricing */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+    .price-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 25px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+    .price-card .price { font-size: 32px; font-weight: 700; color: var(--primary); margin: 10px 0; }
+    .price-notes {
+      background: #eef5fc;
+      border-left: 4px solid var(--primary);
+      padding: 20px;
+      border-radius: 0 8px 8px 0;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .price-notes ul { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+    /* Contact */
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      background: var(--bg-light);
+      padding: 40px;
+      border-radius: 12px;
+    }
+    .contact-info-item {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 20px;
+      align-items: flex-start;
+    }
+    .contact-info-item i {
+      font-size: 22px;
+      color: var(--primary);
+      margin-top: 3px;
+    }
+
+    /* Footer */
+    footer {
+      background: #151b22;
+      color: #aaa;
+      padding: 50px 20px 20px;
+      font-size: 14px;
+    }
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto 30px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 30px;
+    }
+    .footer-col h4 { color: var(--white); margin-bottom: 15px; }
+    .footer-col a { color: #aaa; text-decoration: none; display: block; margin-bottom: 8px; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      border-top: 1px solid #333;
+      padding-top: 20px;
+      text-align: center;
+    }
+
+    /* Floating WhatsApp Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: var(--whatsapp);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      z-index: 1000;
+      text-decoration: none;
+      transition: transform 0.2s;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .about-grid, .contact-container { grid-template-columns: 1fr; }
+      .price-notes ul { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar -->
+  <div class="top-bar">
+    <div>
+      <span id="top-phone"></span> | <span id="top-email"></span>
+    </div>
+    <div>
+      <a id="link-fb" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a id="link-ig" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="nav-container">
+      <a href="#" class="logo" id="brand-logo"></a>
+      <ul class="nav-links">
+        <li><a href="#over-ons">Over Ons</a></li>
+        <li><a href="#diensten">Diensten</a></li>
+        <li><a href="#prijzen">Prijzen</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1 id="hero-title"></h1>
+      <p id="hero-tagline"></p>
+      <a id="hero-whatsapp-btn" class="btn-whatsapp" target="_blank">
+        <i class="fab fa-whatsapp"></i> Neem contact met ons op via WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <!-- Statistics -->
+  <div class="container">
+    <div class="stats-container" id="stats-container"></div>
+  </div>
+
+  <!-- Over Ons -->
+  <section id="over-ons">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <h2 style="color: var(--primary-dark); margin-bottom: 15px;" id="about-title"></h2>
+          <p id="about-text" style="color: var(--text-muted);"></p>
+          <div class="about-features" id="about-features"></div>
+        </div>
+        <div style="text-align: center;">
+          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80" alt="Workman" style="width: 100%; max-width: 450px; border-radius: 12px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Diensten -->
+  <section id="diensten" class="services-bg">
+    <div class="container">
+      <div class="section-title">
+        <h2>Onze Diensten</h2>
+        <p>Snel, vakkundig en altijd met oog voor kwaliteit</p>
+      </div>
+      <div class="services-grid" id="services-grid"></div>
+    </div>
+  </section>
+
+  <!-- Prijzen -->
+  <section id="prijzen">
+    <div class="container">
+      <div class="section-title">
+        <h2>Onze Prijzen</h2>
+        <p>Transparante prijzen, geen verrassingen!</p>
+      </div>
+      <div class="pricing-grid" id="pricing-grid"></div>
+      <div class="price-notes">
+        <h4 style="margin-bottom: 10px; color: var(--primary-dark);">Overige Informatie</h4>
+        <ul id="price-notes-list"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" style="padding-top: 0;">
+    <div class="container">
+      <div class="section-title">
+        <h2>Contact Opnemen</h2>
+        <p>Heeft u vragen of wilt u een offerte? Neem gerust contact op.</p>
+      </div>
+      <div class="contact-container">
+        <div>
+          <div class="contact-info-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <strong>Locatie:</strong>
+              <p id="contact-address"></p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <i class="fas fa-phone-alt"></i>
+            <div>
+              <strong>Telefoon:</strong>
+              <p id="contact-phone"></p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong>E-mail:</strong>
+              <p id="contact-email"></p>
+            </div>
+          </div>
+        </div>
+        <div style="text-align: center; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+          <p style="margin-bottom: 20px;">Klik hieronder om direct een gesprek te starten:</p>
+          <a id="btn-chat-whatsapp" class="btn-whatsapp" target="_blank">
+            <i class="fab fa-whatsapp"></i> WhatsApp Chat
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4 id="footer-brand"></h4>
+        <p>Professionele en betrouwbare dienstverlening met jarenlange ervaring.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigatie</h4>
+        <a href="#over-ons">Over Ons</a>
+        <a href="#diensten">Diensten</a>
+        <a href="#prijzen">Prijzen</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="footer-col">
+        <h4>Bedrijfsregistratie</h4>
+        <p><strong>KVK:</strong> <span id="footer-kvk"></span></p>
+        <p><strong>BTW:</strong> <span id="footer-btw"></span></p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> <span id="footer-copy-name"></span> | Alle rechten voorbehouden.</p>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a id="whatsapp-floating" class="whatsapp-float" target="_blank" title="WhatsApp Chat">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Script wstrzykujący dane do widoku -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // 1. Podstawowe
+      document.title = SITE_DATA.companyName + " - " + SITE_DATA.tagline;
+      document.getElementById('brand-logo').textContent = SITE_DATA.companyName;
+      document.getElementById('hero-title').textContent = SITE_DATA.companyName;
+      document.getElementById('hero-tagline').textContent = SITE_DATA.tagline;
+      document.getElementById('footer-brand').textContent = SITE_DATA.companyName;
+      document.getElementById('footer-copy-name').textContent = SITE_DATA.companyName;
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Kontakty i linki
+      const waLink = "https://wa.me/" + SITE_DATA.whatsappNumber;
+      document.getElementById('hero-whatsapp-btn').href = waLink;
+      document.getElementById('btn-chat-whatsapp').href = waLink;
+      document.getElementById('whatsapp-floating').href = waLink;
+
+      document.getElementById('top-phone').innerHTML = `<a href="tel:${SITE_DATA.phoneRaw}"><i class="fas fa-phone"></i> ${SITE_DATA.phoneDisplay}</a>`;
+      document.getElementById('top-email').innerHTML = `<a href="mailto:${SITE_DATA.email}"><i class="fas fa-envelope"></i> ${SITE_DATA.email}</a>`;
+      document.getElementById('contact-address').textContent = SITE_DATA.address;
+      document.getElementById('contact-phone').innerHTML = `<a href="tel:${SITE_DATA.phoneRaw}">${SITE_DATA.phoneDisplay}</a>`;
+      document.getElementById('contact-email').innerHTML = `<a href="mailto:${SITE_DATA.email}">${SITE_DATA.email}</a>`;
+
+      document.getElementById('footer-kvk').textContent = SITE_DATA.kvk;
+      document.getElementById('footer-btw').textContent = SITE_DATA.btw;
+
+      document.getElementById('link-fb').href = SITE_DATA.facebookUrl;
+      document.getElementById('link-ig').href = SITE_DATA.instagramUrl;
+
+      // 2. Statystyki
+      const statsContainer = document.getElementById('stats-container');
+      statsContainer.innerHTML = SITE_DATA.stats.map(s => `
+        <div class="stat-item">
+          <h3>${s.number}</h3>
+          <p>${s.label}</p>
+        </div>
+      `).join('');
+
+      // 3. About
+      document.getElementById('about-title').textContent = SITE_DATA.aboutTitle;
+      document.getElementById('about-text').textContent = SITE_DATA.aboutText;
+      const featuresContainer = document.getElementById('about-features');
+      featuresContainer.innerHTML = SITE_DATA.aboutFeatures.map(f => `
+        <div class="feature-item">
+          <i class="fas fa-check-circle"></i>
+          <span>${f}</span>
+        </div>
+      `).join('');
+
+      // 4. Diensten
+      const servicesContainer = document.getElementById('services-grid');
+      servicesContainer.innerHTML = SITE_DATA.services.map(srv => `
+        <div class="service-card">
+          <div class="service-icon"><i class="fas ${srv.icon}"></i></div>
+          <h3 style="margin-bottom: 12px; color: var(--primary-dark);">${srv.title}</h3>
+          <p style="color: var(--text-muted); font-size: 14px;">${srv.desc}</p>
+        </div>
+      `).join('');
+
+      // 5. Prijzen
+      const pricingContainer = document.getElementById('pricing-grid');
+      pricingContainer.innerHTML = SITE_DATA.prices.map(p => `
+        <div class="price-card">
+          <h4>${p.title}</h4>
+          <div class="price">${p.price}</div>
+          <p style="color: var(--text-muted); font-size: 13px;">${p.unit}</p>
+        </div>
+      `).join('');
+
+      const notesContainer = document.getElementById('price-notes-list');
+      notesContainer.innerHTML = SITE_DATA.priceNotes.map(n => `
+        <li><i class="fas fa-info-circle" style="color: var(--primary); margin-right: 6px;"></i> ${n}</li>
+      `).join('');
+    });
+  </script>
+</body>
+</html>
