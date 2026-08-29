@@ -21,13 +21,13 @@
       // 1. Dane podstawowe / Basisgegevens / المعلومات الأساسية
       companyName: "fix it Services",
       tagline: "Professionele diensten voor u!",
-      phoneDisplay: "+31 6 236 516 78",
-      phoneRaw: "+31623651678",        // Do dzwonienia (z kodem kraju bez spacji)
-      whatsappNumber: "31623651678",    // Bez '+' i bez spacji do WhatsApp
+      phoneDisplay: "+31 648573406",
+      phoneRaw: "+31648573406",        // Do dzwonienia (z kodem kraju bez spacji)
+      whatsappNumber: "+31648573406",    // Bez '+' i bez spacji do WhatsApp
       email: "info@fix itservices.nl",
-      address: "Mambostraat 108, 5802 LE Venray",
-      kvk: "96401214",
-      btw: "NL005209514B76",
+      address: "Lankforst 1134, 6538 GB Nijmegen",
+      kvk: "42110827",
+      btw: "NL005500685B89",
 
       // 2. Statystyki / Statistieken / الإحصائيات
       stats: [
@@ -172,7 +172,8 @@
 
     /* Hero Section */
     .hero {
-      background: linear-gradient(135deg, rgba(0,86,179,0.95), rgba(0,40,90,0.9)), url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80') center/cover;
+      /* background: linear-gradient(135deg, rgba(0,86,179,0.95), rgba(0,40,90,0.9)), url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1600&q=80') center/cover; */
+      background: black;
       color: var(--white);
       text-align: center;
       padding: 90px 20px;
@@ -199,21 +200,21 @@
     }
 
     /* Stats Section */
-    .stats-container {
-      max-width: 1100px;
-      margin: -40px auto 40px;
-      background: var(--white);
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      padding: 25px 15px;
-      text-align: center;
-      position: relative;
-      z-index: 10;
-    }
-    .stat-item h3 { font-size: 32px; color: var(--primary); font-weight: 700; }
-    .stat-item p { color: var(--text-muted); font-size: 14px; font-weight: 500; }
+    /* .stats-container { */
+      /* /* max-width: 1100px; */
+      /* margin: -40px auto 40px; */
+      /* background: var(--white); */
+      /* border-radius: 12px; */
+      /* box-shadow: 0 10px 30px rgba(0,0,0,0.1); */
+      /* display: grid; */
+      /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+      /* padding: 25px 15px; */
+      /* text-align: center; */
+      /* position: relative; */
+      /* z-index: 10; */
+    /* } */
+    /* .stat-item h3 { font-size: 32px; color: var(--primary); font-weight: 700; } */
+    /* .stat-item p { color: var(--text-muted); font-size: 14px; font-weight: 500; } */ */
 
     /* Layout Sections */
     section { padding: 60px 20px; }
@@ -564,13 +565,13 @@
       document.getElementById('link-ig').href = SITE_DATA.instagramUrl;
 
       // 2. Statystyki
-      const statsContainer = document.getElementById('stats-container');
-      statsContainer.innerHTML = SITE_DATA.stats.map(s => `
-        <div class="stat-item">
-          <h3>${s.number}</h3>
-          <p>${s.label}</p>
-        </div>
-      `).join('');
+      // const statsContainer = document.getElementById('stats-container');
+      // statsContainer.innerHTML = SITE_DATA.stats.map(s => `
+      //   <div class="stat-item">
+      //     <h3>${s.number}</h3>
+      //     <p>${s.label}</p>
+      //   </div>
+      // `).join('');
 
       // 3. About
       document.getElementById('about-title').textContent = SITE_DATA.aboutTitle;
